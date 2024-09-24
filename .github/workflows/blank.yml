@@ -1,4 +1,10 @@
-on: [push]
+name: action.yml demo
+
+on: 
+  issue_comment:
+    types: [created, deleted]
+  issues:
+    types: [opened, edited, milestoned]
 
 jobs:
   hello_world_job:
