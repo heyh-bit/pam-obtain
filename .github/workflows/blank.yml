@@ -1,6 +1,7 @@
 name: action.yml demo
 
 on: 
+  push:
   issue_comment:
     types: [created, deleted]
   issues:
@@ -23,3 +24,6 @@ jobs:
         env:
           DEMO111 : ${{ steps.foo.outputs.abc }}
         run: echo "The time was $DEMO111"
+      - name: echo git-output
+        run: |
+          cat $GITHUB_OUTPUT
