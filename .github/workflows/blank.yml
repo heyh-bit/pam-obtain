@@ -19,3 +19,5 @@ jobs:
         shell: bash
         env:
           RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
+      - name: Get the output time
+        run: echo "The time was ${{ steps.foo.outputs.abc }}"
