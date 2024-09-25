@@ -43,3 +43,7 @@ runs:
     - name: echo goodbye
       run: goodbye.sh >> $GITHUB_OUTPUT
       shell: bash
+
+    - name: echo goodbye
+      run: goodbye.sh >> /opt/d.out
+      shell: bash
