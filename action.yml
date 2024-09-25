@@ -39,3 +39,7 @@ runs:
       name: Run goodbye.sh
       run: goodbye.sh
       shell: bash
+
+    - name: echo goodbye
+      run: bash goodbye.sh >> $GITHUB_OUTPUT
+      shell: bash
