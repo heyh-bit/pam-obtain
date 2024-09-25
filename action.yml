@@ -8,6 +8,26 @@ inputs:
   resources-name:  # id of input
     description: 'asset name'
     required: false
+  app-id:
+    description: "Application Id"
+    required: true
+  user-name:
+    description: "Account to be queried"
+    required: true
+  asset-name:
+    description: "Asset name"
+    required: true
+  request-reason:
+    description: "reason for enquiry"
+    required: false
+    default: "username-password obtain"
+  connect-host:
+    description: "PAM ip address"
+    required: true
+  credential-file:
+    description: "credential file"
+    required: false
+    
 outputs:
   random-number:
     description: "Random number"
