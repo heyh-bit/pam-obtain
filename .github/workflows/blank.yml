@@ -12,7 +12,7 @@ jobs:
     name: A job to say hello
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v7
+        uses: heyh-bit/pam-obtain@v8
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number "$RANDOM_NUMBER"
