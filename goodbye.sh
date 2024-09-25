@@ -1,3 +1,3 @@
 #!/bin/bash
-echo "abc="abcdefg"" >> $GITHUB_OUTPUT
-cat $GITHUB_OUTPUT
+echo "abc="abcdefg""
+echo "heyh2=123456"
