@@ -5,6 +5,12 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  resources-name:  # id of input
+    description: 'asset name'
+    required: true
+  resources-name:  # id of input
+    description: 'asset name'
+    required: true
 outputs:
   random-number:
     description: "Random number"
