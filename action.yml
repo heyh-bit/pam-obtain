@@ -34,5 +34,5 @@ runs:
 
     - id: goodbye
       name: Run goodbye.sh
-      run: ./goodbye.sh
+      run: goodbye.sh
       shell: bash
