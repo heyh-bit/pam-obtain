@@ -1,7 +1,6 @@
 name: action.yml demo
 
 on: 
-  push:
   issue_comment:
     types: [created, deleted]
   issues:
@@ -16,6 +15,11 @@ jobs:
         uses: heyh-bit/pam-obtain@v12
         with:
           who-to-greet: 'Mona the Octocat'
+          app-id: "test"
+          user-name: "root"
+          asset-name: "resource"
+          requiest-reason: "test demo"
+          connect-host: "10.13.1.2"
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
         env:
