@@ -17,14 +17,13 @@ inputs:
     required: true
   request-reason:
     description: "reason for enquiry"
-    required: false
-    default: "username-password obtain"
+    required: true
   connect-host:
     description: "PAM ip address"
     required: true
   credential-file:
     description: "credential file"
-    default: "/workspace/cre.cred"
+    required: true
     
 outputs:
   random-number:
