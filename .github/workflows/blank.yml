@@ -44,4 +44,4 @@ jobs:
         -p${{ needs.hello_world_job.outputs.paswd }}
         -h 8.221.143.170
         -P 3306 
-        -e show DATABASES;
+        -e "show DATABASES";
