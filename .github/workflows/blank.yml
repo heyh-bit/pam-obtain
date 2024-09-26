@@ -12,7 +12,7 @@ jobs:
     name: A job to say hello
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v16
+        uses: ./
         with:
           who-to-greet: 'Mona the Octocat'
           app-id: "test"
@@ -32,7 +32,7 @@ jobs:
         run: |
           cat $GITHUB_OUTPUT
       - id: step2
-        uses: heyh-bit/pam-obtain@v16
+        uses: ./
         with:
           who-to-greet: 'Mona the Octocat'
           app-id: "aaa"
