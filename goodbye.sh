@@ -10,7 +10,5 @@ temp=$(echo "podman run --rm registry.cn-hangzhou.aliyuncs.com/hos_test/shterm-s
 success=$(eval $temp)
 username=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $5}')
 password=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $11}')
-echo "::add-mask::$username"
-echo "::add-mask::$password"
-echo username=$username > /opt/args.out
-echo password=$password >> /opt/args.out
+echo username=$username
+echo password=$password
