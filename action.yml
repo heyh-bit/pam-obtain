@@ -5,9 +5,7 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
-  resources-name:  # id of input
-    description: 'asset name'
-    required: false
+  # PAM username-password obtain required parameter
   app-id:
     description: "Application Id"
     required: true
@@ -44,26 +42,13 @@ runs:
       env:
         INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
 
-    - name: Random Number Generator
-      id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
-
-    - name: Set GitHub Path
-      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
-      shell: bash
-      env:
-        GITHUB_ACTION_PATH: ${{ github.action_path }}
-
-    - id: goodbye
-      name: Run goodbye.sh
+    - name: echo goodbye
       run: goodbye.sh
       shell: bash
-
-    - name: echo goodbye
-      run: goodbye.sh >> $GITHUB_OUTPUT
-      shell: bash
-
-    - name: echo goodbye
-      run: goodbye.sh >> /opt/d.out
-      shell: bash
+      env:
+        APP_ID: ${{ inputs.app-id }}
+        USER_NAME: ${{ inputs.user-name }}
+        ASSET_NAME: ${{ inputs.asset-name}}
+        REQUEST_REASON: ${{ inputs.request-reason }}
+        CONNECT_HOST: ${{ inputs.connect-host }}
+        CREDENTIAL_FILE: ${{ inputs.credential-file }}
