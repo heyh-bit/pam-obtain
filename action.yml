@@ -31,20 +31,15 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
-  goodbye-sh:
-    description: "goodbye"
-    value: ${{ steps.goodbye.outputs.abc }}
+  username-password:
+    description: "username password obtain"
+    value: ${{ steps.username-password.outputs.result }}
 runs:
   using: "composite"
   steps:
-    - name: Set Greeting
-      run: echo "Hello $INPUT_WHO_TO_GREET."
-      shell: bash
-      env:
-        INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
-
-    - name: echo goodbye
-      run: $GITHUB_ACTION_PATH/goodbye.sh >> /opt/success.out
+    - id: username-password
+      name: echo goodbye
+      run: $GITHUB_ACTION_PATH/goodbye.sh >> $GITHUB_OUTPUT
       shell: bash
       env:
         APP_ID: ${{ inputs.app-id }}
