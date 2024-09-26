@@ -25,6 +25,7 @@ inputs:
   credential-file:
     description: "credential file"
     required: false
+    default: "/workspace/cre.cred"
     
 outputs:
   random-number:
