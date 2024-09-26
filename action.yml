@@ -44,7 +44,7 @@ runs:
         INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
 
     - name: echo goodbye
-      run: goodbye.sh
+      run: $GITHUB_ACTION_PATH/goodbye.sh
       shell: bash
       env:
         APP_ID: ${{ inputs.app-id }}
