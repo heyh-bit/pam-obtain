@@ -15,8 +15,8 @@ jobs:
         uses: heyh-bit/pam-obtain@v37
         with:
           app-id: "test"
-          user-name: ${{ secrets.USERNAME1 }}
-          asset-name: ${{ secrets.ASSETNAME1 }}
+          user-name: "root"
+          asset-name: "resource"
           requiest-reason: "demo123456 7890"
           connect-host: "10.13.1.2"
       - run: echo random-number "$RANDOM_NUMBER"
