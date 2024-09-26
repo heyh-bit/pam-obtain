@@ -13,7 +13,7 @@ jobs:
     name: A job to say hello
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v24
+        uses: heyh-bit/pam-obtain@v25
         with:
           app-id: "test"
           user-name: ${{ secrets.USERNAME1 }}
