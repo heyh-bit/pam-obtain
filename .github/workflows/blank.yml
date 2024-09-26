@@ -11,7 +11,6 @@ jobs:
     runs-on: [self-hosted]
     name: A job to say hello
     steps:
-      - uses: actions/checkout@v1
       - id: foo
         uses: ./action.yml
         with:
@@ -33,7 +32,7 @@ jobs:
         run: |
           cat $GITHUB_OUTPUT
       - id: step2
-        uses: ./
+        uses: ./action.yml
         with:
           who-to-greet: 'Mona the Octocat'
           app-id: "aaa"
