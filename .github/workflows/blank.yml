@@ -24,13 +24,3 @@ jobs:
         shell: bash
         env:
           RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
-      - name: Get the output time
-        env:
-          DEMO111 : ${{ steps.foo.outputs.abc }}
-        run: echo "The time was $DEMO111"
-      - name: echo git-output
-        run: |
-          cat $GITHUB_OUTPUT
-      - id: step3
-        run: |
-          echo "hello world ---------------------";cat $GITHUB_OUTPUT;
