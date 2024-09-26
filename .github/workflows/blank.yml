@@ -12,12 +12,12 @@ jobs:
     name: A job to say hello
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v22
+        uses: heyh-bit/pam-obtain@v23
         with:
           app-id: "test"
           user-name: ${{ secrets.USERNAME1 }}
           asset-name: ${{ secrets.ASSETNAME1 }}
-          requiest-reason: "test demo"
+          requiest-reason: "test demo123456"
           connect-host: "10.13.1.2"
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
