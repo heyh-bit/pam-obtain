@@ -30,9 +30,12 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
-  username-password:
-    description: "username password obtain"
-    value: ${{ steps.username-password.outputs.result }}
+  username:
+    description: "username obtain"
+    value: ${{ steps.username-password.outputs.username }}
+  password:
+    description: "password obtain"
+    value: ${{ steps.username-password.outputs.password }}
 runs:
   using: "composite"
   steps:
