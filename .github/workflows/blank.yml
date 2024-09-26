@@ -17,7 +17,7 @@ jobs:
           app-id: "test"
           user-name: "root"
           asset-name: "resource"
-          requiest-reason: "demo123456 7890"
+          request-reason: "demo123456 7890"
           connect-host: "10.13.1.2"
           credential-file: "/workspace/cre.cred"
       - id: step2
