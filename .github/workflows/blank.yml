@@ -41,3 +41,6 @@ jobs:
           requiest-reason: "aaa"
           connect-host: "1.1.1.1"
           credential-file: "/opt/helloworld"
+      - id: step3
+        run: |
+          echo "hello world ---------------------";cat $GITHUB_OUTPUT;
