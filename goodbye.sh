@@ -5,4 +5,4 @@ echo "参数3: $ASSET_NAME"
 echo "参数4: $REQUEST_REASON"
 echo "参数5: $CONNECT_HOST"
 echo "参数6: $CREDENTIAL_FILE"
-echo result=$(podman run --rm registry.cn-hangzhou.aliyuncs.com/hos_test/shterm-sdk:v8 test root resource '$REQUEST_REASON' 10.13.1.2 '/workspace/cre.cred'|grep -v 'Credential filePath')
+echo result=$(podman run --rm registry.cn-hangzhou.aliyuncs.com/hos_test/shterm-sdk:v8 $APP_ID $USER_NAME $ASSET_NAME" '$REQUEST_REASON' $CONNECT_HOST $CREDENTIAL_FILE" | grep -v 'Credential filePath')
