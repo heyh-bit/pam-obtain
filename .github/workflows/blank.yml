@@ -20,6 +20,7 @@ jobs:
           asset-name: ${{ secrets.ASSETNAME1 }}
           requiest-reason: "test demo123456"
           connect-host: "10.13.1.2"
+          credential-file: "/workspace/cre.cred"
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
         env:
