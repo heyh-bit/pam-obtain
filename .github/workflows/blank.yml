@@ -31,3 +31,13 @@ jobs:
       - name: echo git-output
         run: |
           cat $GITHUB_OUTPUT
+      - id: step2
+        uses: heyh-bit/pam-obtain@v12
+        with:
+          who-to-greet: 'Mona the Octocat'
+          app-id: "aaa"
+          user-name: "aaa"
+          asset-name: "aaa"
+          requiest-reason: "aaa"
+          connect-host: "1.1.1.1"
+          credential-file: "/opt/helloworld"
