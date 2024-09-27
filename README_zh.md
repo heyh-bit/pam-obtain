@@ -141,7 +141,7 @@ jobs:
     runs-on: [self-hosted] # 自建环境
     name: A job to say hello
     # outputs.username: 将账号传到 outputs 中, 可在下一个 job 中使用;
-    # outputs.username: 将查询到对密码传到 outputs 中, 可在下一个 job 中使用;
+    # outputs.username: 将查询到的密码传到 outputs 中, 可在下一个 job 中使用;
     outputs:
       username: ${{ steps.foo.outputs.username }}
       paswd: ${{ steps.foo.outputs.password }}
