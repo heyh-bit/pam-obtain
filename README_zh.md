@@ -41,7 +41,7 @@ Github Actions Runners 搭建所需步骤，分为以下几步：
 - 配置主机和 GitHub 自托管运行器通信；
 - 使用 GitHub 自托管运行器；
 
-![image-20240927102321901](assets/image-20240927102321901.png)
+![image-20240927102321901](images/image-20240927102321901.png)
 
 ### 自托管运行器支持的操作系统
 
@@ -53,13 +53,13 @@ Github Actions Runners 搭建所需步骤，分为以下几步：
 | Windows  | Windows 10 64 位 <br />Windows 11 64 位 <br />Windows Server 2016 64 位 <br />Windows Server 2019 64 位 <br />Windows Server 2022 64 位 |
 | MacOS    | macOS 11.0 (Big Sur) 或更高版本                              |
 
-![image-20240927104636806](assets/image-20240927104636806.png)
+![image-20240927104636806](images/image-20240927104636806.png)
 
 ### 自托管运行器支持的 CPU 架构
 
 **自托管运行器应用程序支持以下处理器架构：**
 
-![image-20240927104650319](assets/image-20240927104650319.png)
+![image-20240927104650319](images/image-20240927104650319.png)
 
 ### 下载 actions-runner 安装包
 
@@ -97,7 +97,7 @@ $ RUNNER_ALLOW_RUNASROOT="1" ./config.sh --url https://github.com/heyh-bit/pam-o
 ## 设置工作目录
 ```
 
-![image-20240927105820936](assets/image-20240927105820936.png)
+![image-20240927105820936](images/image-20240927105820936.png)
 
 - 运行 actions-runners 
 
