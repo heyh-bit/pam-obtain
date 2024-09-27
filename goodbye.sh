@@ -10,5 +10,7 @@ temp=$(echo "podman run --rm registry.cn-hangzhou.aliyuncs.com/hos_test/pam-sdk:
 success=$(eval $temp)
 username=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $5}')
 password=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $11}')
-echo username=$username
-echo password=$password
+echo "::add-mask::${username}"
+echo "::add-mask::${password}"
+echo uname=$username
+echo paswd=$password
