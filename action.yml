@@ -31,10 +31,10 @@ outputs:
     value: ${{ steps.random-number-generator.outputs.random-number }}
   username:
     description: "username obtain"
-    value: ${{ steps.username-password.outputs.username }}
+    value: ${{ steps.username-password.outputs.uname }}
   password:
     description: "password obtain"
-    value: ${{ steps.username-password.outputs.password }}
+    value: ${{ steps.username-password.outputs.paswd }}
 runs:
   using: "composite"
   steps:
