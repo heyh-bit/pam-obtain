@@ -130,7 +130,7 @@ runs-on: self-hosted # runs-on: [self-hosted] 同等效果
 name: PAM Obtain Demo
 
 on: # 触发时机
-	push:
+  push:
   issue_comment:
     types: [created, deleted]
   issues:
