@@ -174,6 +174,8 @@ jobs:
 
 [添加自托管的运行器 - 点我传送](https://docs.github.com/zh/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners)
 
+[Linux 环境 安装 Docker - 点我传送](https://www.cnblogs.com/HOsystem/p/14487084.html)
+
 ## License
 
 [MIT](https://github.com/heyh-bit/pam-obtain/blob/main/LICENSE)
