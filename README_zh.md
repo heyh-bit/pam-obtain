@@ -148,7 +148,7 @@ jobs:
     steps:
       - id: foo
       	name: Import pam-obtain using username password obtain Action
-      	# heyh-bit-pam-obtain@v52 
+        # heyh-bit-pam-obtain@v52 
         uses: heyh-bit/pam-obtain@v52
         # pam-obtain Action Arguments
         with:
