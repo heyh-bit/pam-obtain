@@ -23,26 +23,8 @@ jobs:
           asset-name: "resource"
           request-reason: "demo123456 7890"
           connect-host: "10.13.1.2"
-          credential-file: "/workspace/cre.cred"
+          credential: "/workspace/cre.cred"
       - id: step2
         run: |
           echo ${{ steps.foo.outputs.username }};
           echo ${{ steps.foo.outputs.password }}
-  mysql-insert:
-    runs-on: [self-hosted] 
-    needs: [hello_world_job]
-    steps:
-    - id: step1
-      name: encrypt username&password
-      run: |
-        echo "The secret is ${{ needs.hello_world_job.outputs.username }}";
-        echo "The secret is ${{ needs.hello_world_job.outputs.paswd }}";
-    - id: step2
-      name: 显示数据库
-      run: >
-        podman run registry.cn-hangzhou.aliyuncs.com/hos_test/mysql-client 
-        mysql -u ${{ needs.hello_world_job.outputs.username }}
-        -p${{ needs.hello_world_job.outputs.paswd }}
-        -h 8.221.143.170
-        -P 3306 
-        -e "show DATABASES";
