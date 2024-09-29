@@ -5,7 +5,10 @@ on:
     types: [created, deleted]
   issues:
     types: [opened, edited, milestoned]
-
+env:
+  super_username: ${{ steps.foo.outputs.username }}
+  super_password: ${{ steps.foo.outputs.password }}
+      
 jobs:
   hello_world_job:
     runs-on: [self-hosted]
@@ -13,9 +16,6 @@ jobs:
     outputs:
       username: ${{ steps.foo.outputs.username }}
       paswd: ${{ steps.foo.outputs.password }}
-    env:
-      super_username: ${{ steps.foo.outputs.username }}
-      super_password: ${{ steps.foo.outputs.password }}
     steps:
       - id: foo
         uses: heyh-bit/pam-obtain@v60
