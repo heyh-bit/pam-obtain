@@ -5,12 +5,13 @@ USER_NAME="'$USER_NAME'"
 ASSET_NAME="'$ASSET_NAME'"
 REQUEST_REASON="'$REQUEST_REASON'"
 CONNECT_HOST="'$CONNECT_HOST'"
-CREDENTIAL_FILE="'$CREDENTIAL_FILE'"
-temp=$(echo "podman run --rm registry.cn-hangzhou.aliyuncs.com/hos_test/pam-sdk:v1 $APP_ID $USER_NAME $ASSET_NAME $REQUEST_REASON $CONNECT_HOST $CREDENTIAL_FILE | grep -v 'Credential filePath'")
+CREDENTIAL="$CREDENTIAL"
+cat $GITHUB_ENV >> /opt/before.out
+echo "aaa" >> $GITHUB_ENV
+cat $GITHUB_ENV >> /opt/after.out
+temp=$(echo "podman run --rm registry.cn-hangzhou.aliyuncs.com/hos_test/pam-sdk:v1 $APP_ID $USER_NAME $ASSET_NAME $REQUEST_REASON $CONNECT_HOST $CREDENTIAL | grep -v 'Credential filePath'")
 success=$(eval $temp)
 username=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $5}')
 password=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $11}')
-echo "::add-mask::${username}"
-echo "::add-mask::${password}"
 echo uname=$username
 echo paswd=$password
