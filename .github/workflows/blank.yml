@@ -34,6 +34,7 @@ jobs:
           echo ${{ env.super_password }};          
   hello_world_job2:
     runs-on: [self-hosted]
+    needs: [hello_world_job]
     name: test env
     steps:
       - id: step1
