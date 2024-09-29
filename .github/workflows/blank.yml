@@ -5,9 +5,6 @@ on:
     types: [created, deleted]
   issues:
     types: [opened, edited, milestoned]
-env:
-  super_username: ${{ steps.foo.outputs.username }}
-  super_password: ${{ steps.foo.outputs.password }}
       
 jobs:
   hello_world_job:
@@ -30,15 +27,3 @@ jobs:
         run: |
           echo ${{ steps.foo.outputs.username }};
           echo ${{ steps.foo.outputs.password }};
-          echo ${{ env.super_username }};
-          echo ${{ env.super_password }};          
-  hello_world_job2:
-    runs-on: [self-hosted]
-    needs: [hello_world_job]
-    name: test env
-    steps:
-      - id: step1
-        name: test
-        run: |
-          echo ${{ env.super_username }};
-          echo ${{ env.super_password }};
