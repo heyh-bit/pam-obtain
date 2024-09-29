@@ -13,6 +13,9 @@ jobs:
     outputs:
       username: ${{ steps.foo.outputs.username }}
       paswd: ${{ steps.foo.outputs.password }}
+    env:
+      super_username: ${{ steps.foo.outputs.username }}
+      super_password: ${{ steps.foo.outputs.password }}
     steps:
       - id: foo
         uses: heyh-bit/pam-obtain@v60
@@ -26,4 +29,15 @@ jobs:
       - id: step2
         run: |
           echo ${{ steps.foo.outputs.username }};
-          echo ${{ steps.foo.outputs.password }}
+          echo ${{ steps.foo.outputs.password }};
+          echo ${{ env.super_username }};
+          echo ${{ env.super_password }};          
+  hello_world_job2:
+    runs-on: [self-hosted]
+    name: test env
+    steps:
+      - id: step1
+        name: test
+        run: |
+          echo ${{ env.super_username }};
+          echo ${{ env.super_password }};
