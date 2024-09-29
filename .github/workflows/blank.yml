@@ -1,7 +1,6 @@
 name: action.yml demo
 
 on: 
-  push: 
   issue_comment:
     types: [created, deleted]
   issues:
