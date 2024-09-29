@@ -23,7 +23,7 @@ jobs:
           asset-name: "resource"
           request-reason: "demo123456 7890"
           connect-host: "10.13.1.2"
-          credential: $ {{ secrets.PAM_TOKEN }}
+          credential: ${{ secrets.PAM_TOKEN }}
       - id: step2
         run: |
           echo ${{ steps.foo.outputs.username }};
