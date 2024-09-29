@@ -16,7 +16,7 @@ jobs:
       paswd: ${{ steps.foo.outputs.password }}
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v54
+        uses: heyh-bit/pam-obtain@v55
         with:
           app-id: "test"
           user-name: "root"
