@@ -22,13 +22,10 @@ inputs:
     description: "PAM ip address"
     required: true
   credential:
-    description: "credential file"
+    description: "credential content"
     required: true
     
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
   username:
     description: "username obtain"
     value: ${{ steps.username-password.outputs.uname }}
