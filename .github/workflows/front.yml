@@ -23,6 +23,15 @@ jobs:
       id: output
       run: |
         echo "::set-output name=secret_id::my-secret-id"
+        
+    - name: Output Secret ID
+      id: output1
+      run: |
+        echo $GITHUB_ENV
+    - name: Output Secret ID
+      id: output2
+      run: |
+        echo $GITHUB_ENV
 
   use_info:
     needs: generate_info
@@ -35,4 +44,7 @@ jobs:
       run: |
         # 使用 MY_SECRET 变量，但不直接打印
         echo "Using MY_SECRET"
-        # 进行其他操作，如部署等
+    - name: Output Secret ID
+      id: output2
+      run: |
+        echo $GITHUB_ENV
