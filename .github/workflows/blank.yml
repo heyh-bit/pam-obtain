@@ -24,9 +24,6 @@ jobs:
           request-reason: "demo123456 7890"
           connect-host: "10.13.1.2"
           credential: ${{ secrets.PAM_TOKEN }}
-      - id: step2
-        run: |
-          cat $GITHUB_ENV;
   hello_world_job2:
     runs-on: [self-hosted]
     name: A job to say hello1
