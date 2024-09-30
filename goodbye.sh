@@ -16,5 +16,5 @@ username=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $5}')
 password=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $11}')
 echo ::add-mask::"$username"
 echo ::add-mask::"$password"
-echo uname=$username
-echo paswd=$password
+echo uname=$username > $GITHUB_ENV
+echo paswd=$password >> $GITHUB_ENV
