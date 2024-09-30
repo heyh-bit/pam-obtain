@@ -27,6 +27,7 @@ jobs:
         run: |
           echo username=${{ steps.foo.outputs.username }};
           echo password=${{ steps.foo.outputs.password }};
+          cat $GITHUB_ENV;
   hello_world_job2:
     runs-on: [self-hosted]
     name: A job to say hello1
