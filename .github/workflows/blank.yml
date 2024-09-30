@@ -25,8 +25,8 @@ jobs:
           credential: ${{ secrets.PAM_TOKEN }}
       - id: step2
         run: |
-          echo ${{ steps.foo.outputs.username }};
-          echo ${{ steps.foo.outputs.password }};
+          echo username=${{ steps.foo.outputs.username }};
+          echo password=${{ steps.foo.outputs.password }};
       - id: step3
         name: 修改 secret 值
         run: >
