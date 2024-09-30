@@ -28,5 +28,9 @@ jobs:
           echo ${{ steps.foo.outputs.username }};
           echo ${{ steps.foo.outputs.password }};
       - id: step3
-        run: |
-          cat $GITHUB_ENV;
+        name: 修改 secret 值
+        run: >
+          oc create secret generic hello-world
+          --from-literal=username=${{ steps.foo.outputs.username }} 
+          --from-literal=password=${{ steps.foo.outputs.password }}
+          --dry-run=client -o yaml -n default | oc replace -f -
