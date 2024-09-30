@@ -27,3 +27,6 @@ jobs:
         run: |
           echo ${{ steps.foo.outputs.username }};
           echo ${{ steps.foo.outputs.password }};
+      - id: step3
+        run: |
+          cat $GITHUB_ENV;
