@@ -15,7 +15,7 @@ jobs:
       password: ${{ steps.foo.outputs.password }}
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v80
+        uses: heyh-bit/pam-obtain@v81
         with:
           app-id: "test"
           user-name: "root"
@@ -33,5 +33,5 @@ jobs:
           PASSWORD=$(openssl enc -aes-256-cbc -d -pass pass:${{ secrets.encryption_passphrase }} -pbkdf2 -base64 <<< "${{ needs.hello_world_job.outputs.password }}");
           oc create secret generic hello-world
           --from-literal=username=${{ needs.hello_world_job.outputs.username }}
-          --from-literal=pawd=$PASSWORD
+          --from-literal=password=$PASSWORD
           --dry-run=client -o yaml -n default | oc replace -f -
