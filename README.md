@@ -41,7 +41,7 @@ Github Actions Runners 搭建所需步骤，分为以下几步：
 - 配置主机和 GitHub 自托管运行器通信；
 - 使用 GitHub 自托管运行器；
 
-![image-20240927102321901](images/image-20240927102321901.png)
+![image-20240927102321901](assets/image-20240927102321901.png)
 
 ### 自托管运行器支持的操作系统
 
@@ -53,13 +53,13 @@ Github Actions Runners 搭建所需步骤，分为以下几步：
 | Windows  | Windows 10 64 位 <br />Windows 11 64 位 <br />Windows Server 2016 64 位 <br />Windows Server 2019 64 位 <br />Windows Server 2022 64 位 |
 | MacOS    | macOS 11.0 (Big Sur) 或更高版本                              |
 
-![image-20240927104636806](images/image-20240927104636806.png)
+![image-20240927104636806](assets/image-20240927104636806.png)
 
 ### 自托管运行器支持的 CPU 架构
 
 **自托管运行器应用程序支持以下处理器架构：**
 
-![image-20240927104650319](images/image-20240927104650319.png)
+![image-20240927104650319](assets/image-20240927104650319.png)
 
 ### 下载 actions-runner 安装包
 
@@ -97,7 +97,7 @@ $ RUNNER_ALLOW_RUNASROOT="1" ./config.sh --url https://github.com/heyh-bit/pam-o
 ## 设置工作目录
 ```
 
-![image-20240927105820936](images/image-20240927105820936.png)
+![image-20240927105820936](assets/image-20240927105820936.png)
 
 - 运行 actions-runners 
 
@@ -144,14 +144,14 @@ jobs:
       - id: step1
       	name: Import pam-obtain using username password obtain Action
         # heyh-bit-pam-obtain@v52 
-        uses: heyh-bit/pam-obtain@v52
+        uses: heyh-bit/pam-obtain@v96
         # pam-obtain Action Arguments
         with:
           app-id: "test"
           user-name: "root"
           asset-name: "resource"
           connect-host: "ip address"
-          credential: "credential value"
+          credential: ${{ secrets.PAM_TOKEN }}
 ```
 
 ### Arguments
@@ -160,7 +160,7 @@ jobs:
 - `user-name` - PAM 托管资产中待查询账号；
 - `asset-name` - PAM 托管资产名；
 - `connect-host` - PAM IP 地址；
-- `credential` - PAM 应用关联, 应用的 `认证信息` 证书 value 值；
+- `credential` - PAM 应用关联, 应用中 `认证信息` 证书 value 值；
 
 
 ## openshift Demo
@@ -185,19 +185,18 @@ jobs:
       # step1: 通过 Action, 使用 PAM 查询密码
       - id: step1
       	name: Import pam-obtain using username password obtain Action
-        # heyh-bit-pam-obtain@v52 
-        uses: heyh-bit/pam-obtain@v52
+        # heyh-bit/pam-obtain@v96
+        uses: heyh-bit/pam-obtain@v96
         # pam-obtain Action Arguments
         with:
           app-id: "test"
           user-name: "root"
           asset-name: "resource"
           connect-host: "ip address"
-          credential: "credential value"
+          credential: ${{ secrets.PAM_TOKEN }}
       # step2: 通过 env.password 使用查询的密码
       - id: step2
         name: 修改 openshift 的 secret 值
-        
         run: >
           oc create secret generic hello-world
           --from-literal=username=hello
@@ -227,7 +226,8 @@ jobs:
       # step1: 通过 Action, 使用 PAM 查询密码
       - id: step1
       - name: username password obtain
-        uses: heyh-bit/pam-obtain@v92
+        uses: heyh-bit/pam-obtain@v96
+        # pam-obtain Action Arguments
         with:
           app-id: "test"
           user-name: "root"
