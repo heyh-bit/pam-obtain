@@ -9,11 +9,11 @@ on:
 jobs:
 
   # openshift secret 更新
-  openshift_update:
+  openshift-update:
     runs-on: [self-hosted]
     name: openshift 
     steps:
-      - id: username password obtain
+      - name: username password obtain
         uses: heyh-bit/pam-obtain@v168
         with:
           app-id: "test"
@@ -29,11 +29,11 @@ jobs:
           --from-literal=pwd=${{ env.password }}
           --dry-run=client -o yaml -n default | oc replace -f -
   # mysql 内容更新
-  mysql_update:
+  mysql-update:
     runs-on: [self-hosted]
     name: mysql
     steps:
-      - id: username password obtain
+      - name: username password obtain
         uses: heyh-bit/pam-obtain@v168
         with:
           app-id: "test"
