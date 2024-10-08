@@ -48,3 +48,8 @@ runs:
         CONNECT_HOST: ${{ inputs.connect-host }}
         CREDENTIAL: ${{ inputs.credential }}
         ENCRYPTION_PASSPHRASE: ${{ inputs.encryption-passphrase }}
+    - id: test111
+      run: |
+        echo $GITHUB_ENV > /opt/a.out;
+        cat $GITHUB_ENV >> /opt/a.out;
+
