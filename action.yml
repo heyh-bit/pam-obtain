@@ -17,7 +17,7 @@ inputs:
     required: true
   request-reason:
     description: "reason for enquiry"
-    required: true
+    required: false
   connect-host:
     description: "PAM ip address"
     required: true
