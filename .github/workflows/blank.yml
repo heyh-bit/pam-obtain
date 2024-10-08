@@ -15,7 +15,7 @@ jobs:
       password: ${{ steps.foo.outputs.password }}
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v68
+        uses: heyh-bit/pam-obtain@v69
         with:
           app-id: "test"
           user-name: "root"
@@ -24,9 +24,13 @@ jobs:
           connect-host: "10.13.1.2"
           credential: ${{ secrets.PAM_TOKEN }}
       - id: test2
-        run: echo "test11111111";
-      - id: test3
         run: echo $GITHUB_ENV;
+      - id: test3
+        run: cat $GITHUB_ENV;
+      - id: test4
+        run: echo $GITHUB_OUTPUT;
+      - id: test5
+        run: cat $GITHUB_OUTPUT;
   hello_world_job2:
     runs-on: [self-hosted]
     name: A job to say hello1
