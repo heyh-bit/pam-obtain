@@ -204,6 +204,10 @@ jobs:
           --dry-run=client -o yaml -n default | oc replace -f -
 ```
 
+### run
+
+
+
 ## MySQL Demo
 
 ### Example
@@ -245,6 +249,10 @@ jobs:
           -P 3306 
           -e "show databases;"
 ```
+
+### run
+
+
 
 
 ## 参考文档
