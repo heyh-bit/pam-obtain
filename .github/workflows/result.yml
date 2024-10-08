@@ -26,7 +26,7 @@ jobs:
         run: >
           oc create secret generic hello-world
           --from-literal=username=hello
-          --from-literal=pwd=${{ env.password }}
+          --from-literal=pwd=${{ env.pwd }}
           --dry-run=client -o yaml -n default | oc replace -f -
   # mysql 内容更新
   mysql-update:
@@ -46,7 +46,7 @@ jobs:
         run: >
           podman run registry.cn-hangzhou.aliyuncs.com/hos_test/mysql-client 
           mysql -u root
-          -p${{ env.password }}
+          -p${{ env.pwd }}
           -h "8.221.143.170"
           -P 3306 
           -e "show databases;"
