@@ -7,29 +7,46 @@ on:
     types: [opened, edited, milestoned]
       
 jobs:
-  hello_world_job:
+
+  # openshift secret 更新
+  openshift_update:
     runs-on: [self-hosted]
-    name: A job to say hello
-    outputs:
-      username: ${{ steps.foo.outputs.username }}
-      password: ${{ steps.foo.outputs.password }}
+    name: openshift 
     steps:
-      - id: foo
-        uses: heyh-bit/pam-obtain@v91
+      - id: username-password obtain
+        uses: heyh-bit/pam-obtain@v168
         with:
           app-id: "test"
           user-name: "root"
           asset-name: "resource"
           connect-host: "10.13.1.2"
           credential: ${{ secrets.PAM_TOKEN }}
-          encryption-passphrase: ${{ secrets.ENCRYPTION_PASSPHRASE }}
-      - id: env1
-        run: |
-          echo ${{ env.password }};
-      - id: step2
+      - id: openshift update
         name: 修改 secret 值
         run: >
           oc create secret generic hello-world
           --from-literal=username=hello
           --from-literal=pwd=${{ env.password }}
           --dry-run=client -o yaml -n default | oc replace -f -
+  # mysql 内容更新
+  mysql_update:
+    runs-on: [self-hosted]
+    name: mysql
+    steps:
+      - id: username-password obtain
+        uses: heyh-bit/pam-obtain@v168
+        with:
+          app-id: "test"
+          user-name: "root"
+          asset-name: "resource"
+          connect-host: "10.13.1.2"
+          credential: ${{ secrets.PAM_TOKEN }}
+      - id: openshift update
+        name: 修改 secret 值
+        run: >
+          podman run registry.cn-hangzhou.aliyuncs.com/hos_test/mysql-client 
+          mysql -u root
+          -p${{ env.password }}
+          -h "8.221.143.170"
+          -P 3306 
+          -e "show databases;"
