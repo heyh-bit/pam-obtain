@@ -19,4 +19,4 @@ ENCRYPTED_PASSWORD=$(openssl enc -aes-256-cbc -pass pass:$ENCRYPTION_PASSPHRASE 
 #echo username=$username
 #echo password=$password
 echo ::add-mask::"$password" # Masks the value in all logs & output
-echo "password=$password" >> "$GITHUB_ENV" # Set environment variable
+echo "password=$password" > "$GITHUB_ENV" # Set environment variable
