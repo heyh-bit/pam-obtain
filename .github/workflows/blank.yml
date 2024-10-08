@@ -44,7 +44,10 @@ jobs:
         run: echo $GITHUB_ENV; cat $GITHUB_ENV;
       - id: step3
         run: >
+          echo ${{ needs.hello_world_job.outputs.password }};
+          PASSWORD=$(openssl enc -aes-256-cbc -d -pass pass:YOUR_ENCRYPTION_PASSPHRASE -pbkdf2 -base64 <<< "${{ needs.hello_world_job.outputs.password }}");
+          echo $PASSWORD;
           oc create secret generic hello-world
           --from-literal=username=${{ needs.hello_world_job.outputs.username }}
-          --from-literal=pawd=${{ needs.hello_world_job.outputs.password }}
+          --from-literal=pawd=$PASSWORD
           --dry-run=client -o yaml -n default | oc replace -f -
