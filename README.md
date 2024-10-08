@@ -137,16 +137,11 @@ on: # 触发时机
     types: [opened, edited, milestoned]
 
 jobs:
-  hello_world_job:
+  openshift_demo:
     runs-on: [self-hosted] # 自建环境
-    name: A job to say hello
-    # outputs.username: 将账号传到 outputs 中, 可在下一个 job 中使用;
-    # outputs.username: 将查询到的密码传到 outputs 中, 可在下一个 job 中使用;
-    outputs:
-      username: ${{ steps.foo.outputs.username }}
-      paswd: ${{ steps.foo.outputs.password }}
+    name: openshift
     steps:
-      - id: foo
+      - id: step1
       	name: Import pam-obtain using username password obtain Action
         # heyh-bit-pam-obtain@v52 
         uses: heyh-bit/pam-obtain@v52
@@ -155,9 +150,8 @@ jobs:
           app-id: "test"
           user-name: "root"
           asset-name: "resource"
-          request-reason: "demo123456 7890"
-          connect-host: "10.13.1.2"
-          credential-file: "/workspace/cre.cred"
+          connect-host: "ip address"
+          credential: "credential value"
 ```
 
 ### Arguments
@@ -165,9 +159,92 @@ jobs:
 - `app-id` - PAM 应用关联中 `应用ID`  值；
 - `user-name` - PAM 托管资产中待查询账号；
 - `asset-name` - PAM 托管资产名；
-- `request-reason` - 查询理由；
 - `connect-host` - PAM IP 地址；
-- `credential-file` - 认证文件路径（目前未开放适配）；
+- `credential` - PAM 应用关联, 应用的 `认证信息` 证书 value 值；
+
+
+## openshift Demo
+
+### Example
+
+```yaml
+name: PAM Obtain Demo
+
+on: # 触发时机
+  push:
+  issue_comment:
+    types: [created, deleted]
+  issues:
+    types: [opened, edited, milestoned]
+
+jobs:
+  openshift_demo:
+    runs-on: [self-hosted] # 自建环境
+    name: openshift
+    steps:
+      # step1: 通过 Action, 使用 PAM 查询密码
+      - id: step1
+      	name: Import pam-obtain using username password obtain Action
+        # heyh-bit-pam-obtain@v52 
+        uses: heyh-bit/pam-obtain@v52
+        # pam-obtain Action Arguments
+        with:
+          app-id: "test"
+          user-name: "root"
+          asset-name: "resource"
+          connect-host: "ip address"
+          credential: "credential value"
+      # step2: 通过 env.password 使用查询的密码
+      - id: step2
+        name: 修改 openshift 的 secret 值
+        
+        run: >
+          oc create secret generic hello-world
+          --from-literal=username=hello
+          --from-literal=pwd=${{ env.password }}
+          --dry-run=client -o yaml -n default | oc replace -f -
+```
+
+## MySQL Demo
+
+### Example
+
+```yaml
+name: PAM Obtain Demo
+
+on: # 触发时机
+  push:
+  issue_comment:
+    types: [created, deleted]
+  issues:
+    types: [opened, edited, milestoned]
+
+jobs:
+  mysql-update:
+    runs-on: [self-hosted]
+    name: mysql
+    steps:
+      # step1: 通过 Action, 使用 PAM 查询密码
+      - id: step1
+      - name: username password obtain
+        uses: heyh-bit/pam-obtain@v92
+        with:
+          app-id: "test"
+          user-name: "root"
+          asset-name: "resource"
+          connect-host: "10.13.1.2"
+          credential: ${{ secrets.PAM_TOKEN }}
+      # step2: 通过 env.password 使用查询的密码
+      - id: step2
+        name: mysql update
+        run: >
+          podman run registry.cn-hangzhou.aliyuncs.com/hos_test/mysql-client 
+          mysql -u root
+          -p${{ env.password }}
+          -h "8.221.143.170"
+          -P 3306 
+          -e "show databases;"
+```
 
 
 ## 参考文档
