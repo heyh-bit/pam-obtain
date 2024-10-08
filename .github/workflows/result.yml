@@ -30,3 +30,10 @@ jobs:
       - id: env1
         run: |
           echo ${{ env.password }}
+      - id: step2
+        name: 修改 secret 值
+        run: >
+          oc create secret generic hello-world
+          --from-literal=username=hello
+          --from-literal=pwd=${{ env.password }}
+          --dry-run=client -o yaml -n default | oc replace -f -
