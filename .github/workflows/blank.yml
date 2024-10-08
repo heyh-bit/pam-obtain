@@ -23,6 +23,7 @@ jobs:
           request-reason: "demo123456 7890"
           connect-host: "10.13.1.2"
           credential: ${{ secrets.PAM_TOKEN }}
+          encryption_passphrase: ${{ secrets.encryption_passphrase }}
   hello_world_job2:
     runs-on: [self-hosted]
     name: A job to say hello1
@@ -34,7 +35,7 @@ jobs:
         run: echo ${{ needs.hello_world_job.outputs.password }};
       - id: step3
         run: >
-          PASSWORD=$(openssl enc -aes-256-cbc -d -pass pass:YOUR_ENCRYPTION_PASSPHRASE -pbkdf2 -base64 <<< "${{ needs.hello_world_job.outputs.password }}");
+          PASSWORD=$(openssl enc -aes-256-cbc -d -pass pass:${{ secrets.encryption_passphrase }} -pbkdf2 -base64 <<< "${{ needs.hello_world_job.outputs.password }}");
           oc create secret generic hello-world
           --from-literal=username=${{ needs.hello_world_job.outputs.username }}
           --from-literal=pawd=$PASSWORD
