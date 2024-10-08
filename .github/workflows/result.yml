@@ -27,3 +27,6 @@ jobs:
         run: |
           echo $GITHUB_ENV;
           cat $GITHUB_ENV;
+      - id: env1
+        run: |
+          echo ${{ env.password }}
