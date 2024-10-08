@@ -33,5 +33,5 @@ jobs:
           PASSWORD=$(openssl enc -aes-256-cbc -d -pass pass:${{ secrets.encryption_passphrase }} -pbkdf2 -base64 <<< "${{ needs.hello_world_job.outputs.password }}");
           oc create secret generic hello-world
           --from-literal=username=${{ needs.hello_world_job.outputs.username }}
-          --from-literal=password=$PASSWORD
+          --from-literal=pwd=$PASSWORD
           --dry-run=client -o yaml -n default | oc replace -f -
