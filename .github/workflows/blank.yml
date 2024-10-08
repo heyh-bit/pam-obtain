@@ -31,6 +31,10 @@ jobs:
         run: echo $GITHUB_OUTPUT;
       - id: test5
         run: cat $GITHUB_OUTPUT;
+      - id: test6
+        run: echo ${{ steps.foo.outputs.username }}
+      - id: test7
+        run: echo ${{ steps.foo.outputs.password }}
   hello_world_job2:
     runs-on: [self-hosted]
     name: A job to say hello1
