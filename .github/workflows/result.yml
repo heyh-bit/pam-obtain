@@ -21,7 +21,7 @@ jobs:
           asset-name: "resource"
           connect-host: "10.13.1.2"
           credential: ${{ secrets.PAM_TOKEN }}
-      - id: openshift update
+      - id: openshift-update
         name: 修改 secret 值
         run: >
           oc create secret generic hello-world
@@ -41,7 +41,7 @@ jobs:
           asset-name: "resource"
           connect-host: "10.13.1.2"
           credential: ${{ secrets.PAM_TOKEN }}
-      - id: openshift update
+      - id: mysql-update
         name: 修改 secret 值
         run: >
           podman run registry.cn-hangzhou.aliyuncs.com/hos_test/mysql-client 
