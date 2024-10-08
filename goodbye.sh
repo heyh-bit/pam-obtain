@@ -14,5 +14,5 @@ temp=$(echo "podman run -v $GITHUB_ENV:/workspace/cre.cred --rm registry.cn-hang
 success=$(eval $temp)
 username=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $5}')
 password=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $11}')
-echo uname=$username
-echo paswd=$password
+echo username=$username
+echo password=$password
