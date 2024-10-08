@@ -15,7 +15,7 @@ jobs:
       password: ${{ steps.foo.outputs.password }}
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v77
+        uses: heyh-bit/pam-obtain@v78
         with:
           app-id: "test"
           user-name: "root"
@@ -29,10 +29,6 @@ jobs:
     name: A job to say hello1
     needs: [hello_world_job]
     steps:
-      - name: username
-        run: echo ${{ needs.hello_world_job.outputs.username }};
-      - name: password
-        run: echo ${{ needs.hello_world_job.outputs.password }};
       - id: step3
         run: >
           PASSWORD=$(openssl enc -aes-256-cbc -d -pass pass:${{ secrets.encryption_passphrase }} -pbkdf2 -base64 <<< "${{ needs.hello_world_job.outputs.password }}");
