@@ -12,10 +12,10 @@ jobs:
     name: A job to say hello
     outputs:
       username: ${{ steps.foo.outputs.username }}
-      password: ${{ steps.foo.outputs.password }}
+      password: ${{ steps.foo.outputs.psd }}
     steps:
       - id: foo
-        uses: heyh-bit/pam-obtain@v81
+        uses: heyh-bit/pam-obtain@v82
         with:
           app-id: "test"
           user-name: "root"
@@ -29,6 +29,6 @@ jobs:
     needs: [hello_world_job]
     steps:
       - id: step3
-        run: echo "::add-mask::${{ needs.hello_world_job.outputs.password }}"
+        run: echo "${{ needs.hello_world_job.outputs.username }}"
       - id: step4
         run: echo "${{ needs.hello_world_job.outputs.password }}"
