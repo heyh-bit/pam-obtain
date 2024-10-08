@@ -29,5 +29,4 @@ jobs:
     needs: [hello_world_job]
     steps:
       - id: step3
-        run: >
-          ${{ needs.hello_world_job.outputs.password }};
+        run: echo "::add-mask::${{ needs.hello_world_job.outputs.password }}"
