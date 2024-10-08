@@ -1,0 +1,29 @@
+name: action.yml demo
+
+on: 
+  issue_comment:
+    types: [created, deleted]
+  issues:
+    types: [opened, edited, milestoned]
+      
+jobs:
+  hello_world_job:
+    runs-on: [self-hosted]
+    name: A job to say hello
+    outputs:
+      username: ${{ steps.foo.outputs.username }}
+      password: ${{ steps.foo.outputs.password }}
+    steps:
+      - id: foo
+        uses: heyh-bit/pam-obtain@v85
+        with:
+          app-id: "test"
+          user-name: "root"
+          asset-name: "resource"
+          connect-host: "10.13.1.2"
+          credential: ${{ secrets.PAM_TOKEN }}
+          encryption-passphrase: ${{ secrets.ENCRYPTION_PASSPHRASE }}
+      - id: env
+        run: |
+          echo $GITHUB_ENV;
+          cat $GITHUB_ENV;
