@@ -24,9 +24,9 @@ jobs:
           connect-host: "10.13.1.2"
           credential: ${{ secrets.PAM_TOKEN }}
       - id: test2
-        run: echo "test11111111"; cat $GITHUB_ENV;
+        run: echo "test11111111";
       - id: test3
-        run: echo $GITHUB_ENV; cat $GITHUB_ENV;
+        run: echo $GITHUB_ENV;
   hello_world_job2:
     runs-on: [self-hosted]
     name: A job to say hello1
