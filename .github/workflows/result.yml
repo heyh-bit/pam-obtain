@@ -15,7 +15,7 @@ jobs:
       # step1: 通过 Action, 使用 PAM 查询密码
       - id: step1
       - name: username password obtain
-        uses: heyh-bit/pam-obtain@v93
+        uses: heyh-bit/pam-obtain@v96
         with:
           app-id: "test"
           user-name: "root"
@@ -29,7 +29,7 @@ jobs:
         run: >
           oc create secret generic hello-world
           --from-literal=username=hello
-          --from-literal=pwd=${{ env.password }}
+          --from-literal=password=${{ env.password }}
           --dry-run=client -o yaml -n default | oc replace -f -
 
   # demo2: MySQL 内容查询
@@ -40,7 +40,7 @@ jobs:
       # step1: 通过 Action, 使用 PAM 查询密码
       - id: step1
       - name: username password obtain
-        uses: heyh-bit/pam-obtain@v93
+        uses: heyh-bit/pam-obtain@v96
         with:
           app-id: "test"
           user-name: "root"
@@ -53,7 +53,7 @@ jobs:
         run: >
           podman run registry.cn-hangzhou.aliyuncs.com/hos_test/mysql-client 
           mysql -u root
-          -p${{ env.pwd }}
+          -p${{ env.password }}
           -h "8.221.143.170"
           -P 3306 
           -e "show databases;"
