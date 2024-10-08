@@ -31,4 +31,6 @@ jobs:
       - id: step3
         run: echo "${{ needs.hello_world_job.outputs.username }}"
       - id: step4
-        run: echo "${{ needs.hello_world_job.outputs.password }}"
+        run: |
+          API_PASSWORD="123456"
+          echo ::add-mask::$API_PASSWORD
