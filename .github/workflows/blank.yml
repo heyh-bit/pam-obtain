@@ -12,7 +12,7 @@ jobs:
     name: A job to say hello
     outputs:
       username: ${{ steps.foo.outputs.username }}
-      paswd: ${{ steps.foo.outputs.password }}
+      password: ${{ steps.foo.outputs.password }}
     steps:
       - id: foo
         uses: heyh-bit/pam-obtain@v66
@@ -38,5 +38,5 @@ jobs:
         run: >
           oc create secret generic hello-world
           --from-literal=username=${{ needs.hello_world_job.outputs.username }}
-          --from-literal=password=${{ needs.hello_world_job.outputs.paswd }}
+          --from-literal=pawd=${{ needs.hello_world_job.outputs.password }}
           --dry-run=client -o yaml -n default | oc replace -f -
