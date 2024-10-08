@@ -21,6 +21,7 @@ jobs:
           user-name: "root"
           asset-name: "resource"
           connect-host: "10.13.1.2"
+          request-reason: "hello world1"
           credential: ${{ secrets.PAM_TOKEN }}
       # step2: 通过 env.password 使用查询的密码
       - id: step2
@@ -45,6 +46,7 @@ jobs:
           user-name: "root"
           asset-name: "resource"
           connect-host: "10.13.1.2"
+          request-reason: "hello world2"
           credential: ${{ secrets.PAM_TOKEN }}
       # step2: 通过 env.password 使用查询的密码
       - id: step2
