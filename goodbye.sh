@@ -14,5 +14,6 @@ temp=$(echo "podman run -v $GITHUB_ENV:/workspace/cre.cred --rm registry.cn-hang
 success=$(eval $temp)
 username=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $5}')
 password=$(echo $success|tr -d '{}'|awk -F '[":,]' '{print $11}')
+ENCRYPTED_PASSWORD=$(openssl enc -aes-256-cbc -pass pass:YOUR_ENCRYPTION_PASSPHRASE -base64 <<< "$password")
 echo username=$username
-echo password=$password
+echo password=$ENCRYPTED_PASSWORD
