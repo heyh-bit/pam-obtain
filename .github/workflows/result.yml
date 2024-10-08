@@ -13,7 +13,7 @@ jobs:
     runs-on: [self-hosted]
     name: openshift 
     steps:
-      - id: username-password obtain
+      - id: username password obtain
         uses: heyh-bit/pam-obtain@v168
         with:
           app-id: "test"
@@ -33,7 +33,7 @@ jobs:
     runs-on: [self-hosted]
     name: mysql
     steps:
-      - id: username-password obtain
+      - id: username password obtain
         uses: heyh-bit/pam-obtain@v168
         with:
           app-id: "test"
