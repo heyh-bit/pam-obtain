@@ -28,10 +28,10 @@ inputs:
 outputs:
   username:
     description: "username obtain"
-    value: ${{ steps.username-password.outputs.uname }}
+    value: ${{ steps.username-password.outputs.username }}
   password:
     description: "password obtain"
-    value: ${{ steps.username-password.outputs.paswd }}
+    value: ${{ steps.username-password.outputs.password }}
 runs:
   using: "composite"
   steps:
