@@ -14,7 +14,7 @@ jobs:
     steps:
       # step1: 通过 Action, 使用 PAM 查询密码
       - id: step1
-      - name: username password obtain
+        name: username password obtain
         uses: heyh-bit/pam-obtain@v96
         with:
           app-id: "test"
@@ -25,7 +25,6 @@ jobs:
       # step2: 通过 env.password 使用查询的密码
       - id: step2
         name: 修改 openshift 的 secret 值
-        
         run: >
           oc create secret generic hello-world
           --from-literal=username=hello
@@ -39,7 +38,7 @@ jobs:
     steps:
       # step1: 通过 Action, 使用 PAM 查询密码
       - id: step1
-      - name: username password obtain
+        name: username password obtain
         uses: heyh-bit/pam-obtain@v96
         with:
           app-id: "test"
