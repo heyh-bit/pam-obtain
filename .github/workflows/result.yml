@@ -14,7 +14,7 @@ jobs:
     name: openshift 
     steps:
       - name: username password obtain
-        uses: heyh-bit/pam-obtain@v168
+        uses: heyh-bit/pam-obtain@v92
         with:
           app-id: "test"
           user-name: "root"
@@ -34,7 +34,7 @@ jobs:
     name: mysql
     steps:
       - name: username password obtain
-        uses: heyh-bit/pam-obtain@v168
+        uses: heyh-bit/pam-obtain@v92
         with:
           app-id: "test"
           user-name: "root"
