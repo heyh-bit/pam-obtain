@@ -24,6 +24,9 @@ inputs:
   credential:
     description: "credential content"
     required: true
+  encryption-passphrase:
+    description: "secret key"
+    required: true
     
 outputs:
   username:
@@ -45,7 +48,7 @@ runs:
         REQUEST_REASON: ${{ inputs.request-reason }}
         CONNECT_HOST: ${{ inputs.connect-host }}
         CREDENTIAL: ${{ inputs.credential }}
-        ENCRYPTION_PASSPHRASE: ${{ inputs.encryption_passphrase }}
+        ENCRYPTION_PASSPHRASE: ${{ inputs.encryption-passphrase }}
       run: >
         echo $GITHUB_ENV;
         cat $GITHUB_ENV;
