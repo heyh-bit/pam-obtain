@@ -159,7 +159,7 @@ jobs:
 - `app-id` - PAM 应用关联中 `应用ID`  值；
 - `user-name` - PAM 托管资产中待查询账号；
 - `asset-name` - PAM 托管资产名；
-- `connect-host` - PAM IP 地址；
+- `connect-host` - APPMGR IP 地址；
 - `credential` - PAM 应用关联, 应用中 `认证信息` 证书 value 值；
 
 
@@ -192,7 +192,7 @@ jobs:
           app-id: "test"
           user-name: "root"
           asset-name: "resource"
-          connect-host: "ip address"
+          connect-host: "10.13.1.2"
           credential: ${{ secrets.PAM_TOKEN }}
       # step2: 通过 env.password 使用查询的密码
       - id: step2
